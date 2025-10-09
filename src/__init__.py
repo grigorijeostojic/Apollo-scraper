@@ -1,3 +1,0 @@
-# Apollo Scraper Apify Actor
-
-
