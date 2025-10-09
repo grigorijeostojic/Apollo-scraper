@@ -48,7 +48,9 @@ async def main():
         # Get proxy URL if configured
         proxy_url = None
         if proxy_config:
-            proxy_url = await Actor.create_proxy_configuration(proxy_config).new_url()
+            from apify import ProxyConfiguration
+            proxy_configuration = await ProxyConfiguration.from_actor_input(proxy_config)
+            proxy_url = await proxy_configuration.new_url()
             log_message(f"Using proxy: {proxy_url[:50]}...")
         
         # Initialize scraper
@@ -162,4 +164,5 @@ async def main():
 if __name__ == '__main__':
     import asyncio
     asyncio.run(main())
+
 
