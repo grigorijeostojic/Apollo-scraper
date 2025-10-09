@@ -48,10 +48,18 @@ async def main():
         # Get proxy URL if configured
         proxy_url = None
         if proxy_config:
-            from apify import ProxyConfiguration
-            proxy_configuration = await ProxyConfiguration.from_actor_input(proxy_config)
-            proxy_url = await proxy_configuration.new_url()
-            log_message(f"Using proxy: {proxy_url[:50]}...")
+            try:
+                from apify import ProxyConfiguration
+                # Create proxy configuration
+                if isinstance(proxy_config, dict) and proxy_config.get('useApifyProxy'):
+                    proxy_configuration = ProxyConfiguration()
+                else:
+                    proxy_configuration = ProxyConfiguration(**proxy_config) if isinstance(proxy_config, dict) else ProxyConfiguration()
+                proxy_url = await proxy_configuration.new_url()
+                log_message(f"Using proxy: {proxy_url[:50]}...")
+            except Exception as e:
+                log_message(f"Proxy setup failed, continuing without proxy: {e}", 'WARNING')
+                proxy_url = None
         
         # Initialize scraper
         scraper = None
