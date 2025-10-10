@@ -1,0 +1,81 @@
+{
+  "title": "Apollo.io Free Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "apolloEmail": {
+      "title": "Apollo.io Email",
+      "type": "string",
+      "description": "Your Apollo.io account email (free account works!)",
+      "editor": "textfield",
+      "example": "your@email.com"
+    },
+    "apolloPassword": {
+      "title": "Apollo.io Password",
+      "type": "string",
+      "description": "Your Apollo.io account password",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "Apollo.io URLs to scrape (search results, company profiles, contact pages)",
+      "editor": "requestListSources",
+      "prefill": [
+        {
+          "url": "https://app.apollo.io/#/search?query=..."
+        }
+      ]
+    },
+    "maxPages": {
+      "title": "Maximum Pages",
+      "type": "integer",
+      "description": "Maximum number of pages to scrape per URL (default: 10)",
+      "editor": "number",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 100
+    },
+    "enrichProfiles": {
+      "title": "Enrich Profiles",
+      "type": "boolean",
+      "description": "Visit each contact's detail page for complete data (slower but more data)",
+      "editor": "checkbox",
+      "default": true
+    },
+    "minDelay": {
+      "title": "Minimum Delay (seconds)",
+      "type": "integer",
+      "description": "Minimum delay between actions to avoid detection",
+      "editor": "number",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "maxDelay": {
+      "title": "Maximum Delay (seconds)",
+      "type": "integer",
+      "description": "Maximum delay between actions",
+      "editor": "number",
+      "default": 7,
+      "minimum": 2,
+      "maximum": 20
+    },
+    "proxyConfiguration": {
+      "title": "Proxy Configuration",
+      "type": "object",
+      "description": "Proxy settings (recommended for Apify)",
+      "editor": "proxy",
+      "prefill": {
+        "useApifyProxy": true
+      }
+    }
+  },
+  "required": ["apolloEmail", "apolloPassword", "startUrls"]
+}
+
+
+
+
+
