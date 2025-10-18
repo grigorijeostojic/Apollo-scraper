@@ -1,61 +1,61 @@
 # Apollo.io Free Account Scraper - Apify Actor
 
-## 🚀 What is this?
+## ðŸš€ What is this?
 
 A powerful **Apify Actor** that scrapes Apollo.io using a **100% free account** - no paid API or credits required!
 
-### ✨ Key Features
+### âœ¨ Key Features
 
-- ✅ **Works with FREE Apollo accounts** - No paid subscription needed
-- ✅ **Scrapes forever** - No expiring credits or API limits
-- ✅ **Comprehensive data** - Extracts ALL visible information
-- ✅ **Smart pagination** - Automatically handles multiple pages
-- ✅ **Profile enrichment** - Optional deep dive into each contact
-- 🛡️ **ADVANCED ANTI-DETECTION** - undetected-chromedriver + stealth JS
-- 🍪 **Cookie Authentication** - Skip login & CAPTCHA on subsequent runs
-- 🤖 **Human-Like Behavior** - Realistic typing, mouse movements, delays
-- ✅ **Session persistence** - Saves login cookies for future runs
+- âœ… **Works with FREE Apollo accounts** - No paid subscription needed
+- âœ… **Scrapes forever** - No expiring credits or API limits
+- âœ… **Comprehensive data** - Extracts ALL visible information
+- âœ… **Smart pagination** - Automatically handles multiple pages
+- âœ… **Profile enrichment** - Optional deep dive into each contact
+- ðŸ› ï¸ **ADVANCED ANTI-DETECTION** - undetected-chromedriver + stealth JS
+- ðŸª **Cookie Authentication** - Skip login & CAPTCHA on subsequent runs
+- ðŸ¤– **Human-Like Behavior** - Realistic typing, mouse movements, delays
+- âœ… **Session persistence** - Saves login cookies for future runs
 
-### 🆕 v2.0 - Anti-Detection Upgrade
+### ðŸ†• v2.0 - Anti-Detection Upgrade
 
 **NEW:** This scraper now uses **industry-leading anti-detection technology**:
-- ✅ **undetected-chromedriver** - Automatically bypasses bot detection
-- ✅ **Cookie-based auth** - Skip login after first run (90% CAPTCHA reduction!)
-- ✅ **Human behavior simulation** - Variable typing speed, mouse movements, typos
-- ✅ **Advanced stealth JavaScript** - Multi-layer detection bypass
-- ✅ **90-95% success rate** (vs 30-40% with standard Selenium)
+- âœ… **undetected-chromedriver** - Automatically bypasses bot detection
+- âœ… **Cookie-based auth** - Skip login after first run (90% CAPTCHA reduction!)
+- âœ… **Human behavior simulation** - Variable typing speed, mouse movements, typos
+- âœ… **Advanced stealth JavaScript** - Multi-layer detection bypass
+- âœ… **90-95% success rate** (vs 30-40% with standard Selenium)
 
-📖 **Read more:** [ANTI_DETECTION_GUIDE.md](./ANTI_DETECTION_GUIDE.md)
+ðŸ“– **Read more:** [ANTI_DETECTION_GUIDE.md](./ANTI_DETECTION_GUIDE.md)
 
 ---
 
-## 📊 What Can Be Scraped?
+## ðŸ“Š What Can Be Scraped?
 
 ### Contacts/Leads
-- ✅ Name, Title, Company
-- ✅ Email addresses (if visible)
-- ✅ Phone numbers (mobile, direct, office)
-- ✅ Location
-- ✅ LinkedIn, Twitter, GitHub profiles
-- ✅ Work experience & education
-- ✅ Technologies/skills
+- âœ… Name, Title, Company
+- âœ… Email addresses (if visible)
+- âœ… Phone numbers (mobile, direct, office)
+- âœ… Location
+- âœ… LinkedIn, Twitter, GitHub profiles
+- âœ… Work experience & education
+- âœ… Technologies/skills
 
 ### Companies
-- ✅ Company name, website, description
-- ✅ Industry, employee count, revenue
-- ✅ Headquarters location
-- ✅ Technologies used
-- ✅ Funding information
-- ✅ Social media profiles
+- âœ… Company name, website, description
+- âœ… Industry, employee count, revenue
+- âœ… Headquarters location
+- âœ… Technologies used
+- âœ… Funding information
+- âœ… Social media profiles
 
 ### Search Results
-- ✅ Bulk extraction with auto-pagination
-- ✅ Up to 100 pages per search (configurable)
-- ✅ Optional enrichment (visit detail pages)
+- âœ… Bulk extraction with auto-pagination
+- âœ… Up to 100 pages per search (configurable)
+- âœ… Optional enrichment (visit detail pages)
 
 ---
 
-## 🎯 How to Use
+## ðŸŽ¯ How to Use
 
 ### Step 1: Configure Input
 
@@ -95,13 +95,13 @@ Click "Start" and the actor will:
 
 ---
 
-## 📥 Input Parameters
+## ðŸ“¥ Input Parameters
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `apolloEmail` | String | ✅ Yes | Your Apollo.io account email |
-| `apolloPassword` | String | ✅ Yes | Your Apollo.io account password |
-| `startUrls` | Array | ✅ Yes | Apollo.io URLs to scrape |
+| `apolloEmail` | String | âœ… Yes | Your Apollo.io account email |
+| `apolloPassword` | String | âœ… Yes | Your Apollo.io account password |
+| `startUrls` | Array | âœ… Yes | Apollo.io URLs to scrape |
 | `maxPages` | Integer | No | Max pages per URL (default: 10) |
 | `enrichProfiles` | Boolean | No | Visit detail pages (default: true) |
 | `minDelay` | Integer | No | Min delay in seconds (default: 3) |
@@ -110,7 +110,7 @@ Click "Start" and the actor will:
 
 ---
 
-## 📤 Output Format
+## ðŸ“¤ Output Format
 
 The actor pushes data to the Apify dataset in this format:
 
@@ -148,7 +148,7 @@ The actor pushes data to the Apify dataset in this format:
 
 ---
 
-## 💡 Usage Examples
+## ðŸ’¡ Usage Examples
 
 ### Example 1: Scrape Tech Startup Founders
 
@@ -198,7 +198,7 @@ The actor pushes data to the Apify dataset in this format:
 
 ---
 
-## 🔧 Configuration Tips
+## ðŸ”§ Configuration Tips
 
 ### For Maximum Speed
 - Set `enrichProfiles: false`
@@ -217,7 +217,7 @@ The actor pushes data to the Apify dataset in this format:
 
 ---
 
-## ⚠️ Important Notes
+## âš ï¸ Important Notes
 
 ### Free Account Limits
 - Free Apollo accounts have monthly search limits (~50-100 searches)
@@ -236,7 +236,7 @@ The actor pushes data to the Apify dataset in this format:
 
 ---
 
-## 🐛 Troubleshooting
+## ðŸ› Troubleshooting
 
 ### "Login failed"
 - Double-check your Apollo credentials
@@ -259,7 +259,7 @@ The actor pushes data to the Apify dataset in this format:
 
 ---
 
-## 📈 Best Practices
+## ðŸ“ˆ Best Practices
 
 1. **Start Small**: Test with 1-2 pages first
 2. **Use Proxies**: Enable Apify proxy for reliability
@@ -269,20 +269,20 @@ The actor pushes data to the Apify dataset in this format:
 
 ---
 
-## ⚖️ Legal & Ethical Use
+## âš–ï¸ Legal & Ethical Use
 
 **DISCLAIMER**: This actor is for educational and personal use only.
 
-- ⚠️ Respect Apollo.io's Terms of Service
-- ⚠️ Don't scrape at excessive rates
-- ⚠️ Comply with GDPR and data privacy laws
-- ⚠️ Use data ethically and legally
+- âš ï¸ Respect Apollo.io's Terms of Service
+- âš ï¸ Don't scrape at excessive rates
+- âš ï¸ Comply with GDPR and data privacy laws
+- âš ï¸ Use data ethically and legally
 
 The actor includes built-in delays and anti-detection to be respectful of the platform.
 
 ---
 
-## 🔒 Security
+## ðŸ”’ Security
 
 - Passwords are stored securely in Apify
 - Marked as secret in input schema
@@ -291,21 +291,21 @@ The actor includes built-in delays and anti-detection to be respectful of the pl
 
 ---
 
-## 💰 Cost
+## ðŸ’° Cost
 
 ### Actor Usage
 - **Apify Free Tier**: ~5-10 hours of runtime/month
 - **Paid Plans**: $49/month for unlimited
 
 ### No Apollo Costs
-- ✅ Uses FREE Apollo account
-- ✅ No API credits required
-- ✅ No paid subscription needed
-- ✅ Works forever!
+- âœ… Uses FREE Apollo account
+- âœ… No API credits required
+- âœ… No paid subscription needed
+- âœ… Works forever!
 
 ---
 
-## 📞 Support
+## ðŸ“ž Support
 
 For issues or questions:
 1. Check this README carefully
@@ -315,15 +315,15 @@ For issues or questions:
 
 ---
 
-## 🎉 Ready to Scrape!
+## ðŸŽ‰ Ready to Scrape!
 
-1. ✅ Enter your Apollo credentials
-2. ✅ Add your Apollo URLs
-3. ✅ Configure max pages and enrichment
-4. ✅ Click "Start"
-5. ✅ Download your data from dataset!
+1. âœ… Enter your Apollo credentials
+2. âœ… Add your Apollo URLs
+3. âœ… Configure max pages and enrichment
+4. âœ… Click "Start"
+5. âœ… Download your data from dataset!
 
-**Happy Scraping! 🚀**
+**Happy Scraping! ðŸš€**
 
 ---
 
