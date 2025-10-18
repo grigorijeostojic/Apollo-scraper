@@ -1,0 +1,31 @@
+{
+  "name": "apollo-data-scraper",
+  "version": "1.0.0",
+  "description": "Scrape contact data from Apollo.io lists with ease",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node test-local.js",
+    "test:quick": "node test-local.js --pages 1 --delay 3",
+    "test:full": "node test-local.js --pages 5 --delay 5"
+  },
+  "keywords": [
+    "apollo",
+    "scraper",
+    "contacts",
+    "email",
+    "data-extraction",
+    "apify"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "apify": "^3.1.0",
+    "playwright": "^1.40.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
