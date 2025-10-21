@@ -116,35 +116,29 @@ async def main():
                     log_message(f"⚠️  Could not save cookies: {e}", 'WARNING')
             
             # Process each URL
-            for idx, url_obj in enumerate(start_urls):
-                url = url_obj.get('url') if isinstance(url_obj, dict) else url_obj
+            try:
+                search_url = "https://app.apollo.io/#/people?page=1&contactEmailStatusV2[]=verified&personTitles[]=founder&personTitles[]=co-founder&personTitles[]=ceo&personTitles[]=owner&personTitles[]=creative%20director&personTitles[]=marketing%20manager&personTitles[]=director&personTitles[]=ecommerce%20manager&personTitles[]=brand%20manager&personTitles[]=product%20designer&personLocations[]=United%20States&personLocations[]=Canada&personLocations[]=United%20Kingdom&personLocations[]=Australia&personLocations[]=New%20Zealand&personLocations[]=Netherlands&personLocations[]=Sweden&personLocations[]=Denmark&personLocations[]=Finland&personLocations[]=Germany&personLocations[]=Austria&personLocations[]=Belgium&personLocations[]=Ireland&organizationNumEmployeesRanges[]=1%2C10&organizationNumEmployeesRanges[]=11%2C20&organizationNumEmployeesRanges[]=21%2C50&organizationIndustryTagIds[]=5567e1ae73696423dc040000&organizationIndustryTagIds[]=5567cddb7369644d250c0000&organizationIndustryTagIds[]=5567ce987369643b789e0000&organizationIndustryTagIds[]=5567ce1e7369643b806a0000&organizationIndustryTagIds[]=5567e113736964198d5e0800&organizationIndustryTagIds[]=5567e1947369641ead570000&qOrganizationKeywordTags[]=ecommerce&qOrganizationKeywordTags[]=online%20store&qOrganizationKeywordTags[]=dtc&qOrganizationKeywordTags[]=product%20line&qOrganizationKeywordTags[]=retail&includedOrganizationKeywordFields[]=tags&includedOrganizationKeywordFields[]=name&prospectedByCurrentTeam[]=no&sortAscending=false&sortByField=organization_estimated_number_employees"
                 
-                if not is_valid_url(url):
-                    log_message(f"Skipping invalid URL: {url}", 'WARNING')
-                    continue
-                
-                log_message(f"Processing URL {idx + 1}/{len(start_urls)}: {url}")
-                
-                try:
-                    # Scrape the URL
-                    results = scraper.scrape_url(
-                        url=url,
-                        follow_links=enrich_profiles,
-                        max_pages=max_pages,
-                        min_delay=min_delay,
-                        max_delay=max_delay
-                    )
-                    
-                    log_message(f"Scraped {len(results)} results from {url}", 'SUCCESS')
-                    
-                    # Push results to Apify dataset
-                    if results:
-                        await Actor.push_data(results)
-                        total_results += len(results)
-                    
-                except Exception as e:
-                    log_message(f"Error scraping {url}: {str(e)}", 'ERROR')
-                    continue
+                log_message(f"🌐 Navigating to Apollo search: {search_url}")
+
+                # Scrape search results directly
+                results = scraper.scrape_url(
+                    url=search_url,
+                    follow_links=enrich_profiles,
+                    max_pages=max_pages,
+                    min_delay=min_delay,
+                    max_delay=max_delay
+                )
+
+                log_message(f"Scraped {len(results)} results from Apollo search", 'SUCCESS')
+
+                # Push results to Apify dataset
+                if results:
+                    await Actor.push_data(results)
+                    total_results += len(results)
+
+            except Exception as e:
+                log_message(f"❌ Error scraping Apollo search: {str(e)}", 'ERROR')
             
             log_message(f"Scraping complete! Total results: {total_results}", 'SUCCESS')
             
