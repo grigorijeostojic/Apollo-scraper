@@ -10,7 +10,10 @@ from apify import Actor
 from src.scraper import ApolloScraper
 from src.utils import log_message, is_valid_url
 import json
-
+import time
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 async def main():
     """
@@ -120,7 +123,20 @@ async def main():
                 search_url = "https://app.apollo.io/#/people?page=1&contactEmailStatusV2[]=verified&personTitles[]=founder&personTitles[]=co-founder&personTitles[]=ceo&personTitles[]=owner&personTitles[]=creative%20director&personTitles[]=marketing%20manager&personTitles[]=director&personTitles[]=ecommerce%20manager&personTitles[]=brand%20manager&personTitles[]=product%20designer&personLocations[]=United%20States&personLocations[]=Canada&personLocations[]=United%20Kingdom&personLocations[]=Australia&personLocations[]=New%20Zealand&personLocations[]=Netherlands&personLocations[]=Sweden&personLocations[]=Denmark&personLocations[]=Finland&personLocations[]=Germany&personLocations[]=Austria&personLocations[]=Belgium&personLocations[]=Ireland&organizationNumEmployeesRanges[]=1%2C10&organizationNumEmployeesRanges[]=11%2C20&organizationNumEmployeesRanges[]=21%2C50&organizationIndustryTagIds[]=5567e1ae73696423dc040000&organizationIndustryTagIds[]=5567cddb7369644d250c0000&organizationIndustryTagIds[]=5567ce987369643b789e0000&organizationIndustryTagIds[]=5567ce1e7369643b806a0000&organizationIndustryTagIds[]=5567e113736964198d5e0800&organizationIndustryTagIds[]=5567e1947369641ead570000&qOrganizationKeywordTags[]=ecommerce&qOrganizationKeywordTags[]=online%20store&qOrganizationKeywordTags[]=dtc&qOrganizationKeywordTags[]=product%20line&qOrganizationKeywordTags[]=retail&includedOrganizationKeywordFields[]=tags&includedOrganizationKeywordFields[]=name&prospectedByCurrentTeam[]=no&sortAscending=false&sortByField=organization_estimated_number_employees"
                 
                 log_message(f"🌐 Navigating to Apollo search: {search_url}")
-
+                # Open the search page
+                scraper.driver.get(search_url)
+                
+                # Wait for Apollo to render at least one profile card (adjust timeout if needed)
+                try:
+                    WebDriverWait(scraper.driver, 25).until(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-cy='PersonCard']"))
+                    )
+                    log_message("✅ Apollo results list loaded successfully!")
+                except Exception:
+                    log_message("⚠️ Could not detect profile cards in time, scraping anyway...")
+                
+                # Optional: wait a bit more to ensure everything is visible
+                time.sleep(3)
                 # Scrape search results directly
                 results = scraper.scrape_url(
                     url=search_url,
