@@ -53,7 +53,7 @@ class ApolloScraper:
         
         # Note: Headless mode is MORE detectable. Only use if absolutely necessary.
         if self.headless:
-            options.add_argument('--headless=new')
+            options.add_argument('--headless')
             log_message("⚠️  Running in headless mode (more detectable)", 'WARNING')
         else:
             log_message("✅ Running in headful mode (less detectable)", 'INFO')
@@ -76,8 +76,8 @@ class ApolloScraper:
         options.add_argument("--disable-background-timer-throttling")
         options.add_argument("--disable-renderer-backgrounding")
         options.add_argument("--disable-features=VizDisplayCompositor")
-        options.add_argument("--single-process")
-        options.add_argument("--no-zygote")
+        #options.add_argument("--single-process")
+        #options.add_argument("--no-zygote")
         options.add_argument("--disable-client-side-phishing-detection")
         options.add_argument("--disable-default-apps")
         options.add_argument("--mute-audio")
@@ -748,4 +748,5 @@ class ApolloScraper:
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Context manager exit"""
         self.close()
+
 
