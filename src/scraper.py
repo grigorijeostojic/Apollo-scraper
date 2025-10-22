@@ -70,7 +70,17 @@ class ApolloScraper:
         options.add_argument('--disable-gpu')
         options.add_argument('--window-size=1920,1080')
         options.add_argument('--start-maximized')
-        
+        # Extra stability flags for Apify / Docker environments
+        options.add_argument("--disable-software-rasterizer")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--disable-background-timer-throttling")
+        options.add_argument("--disable-renderer-backgrounding")
+        options.add_argument("--disable-features=VizDisplayCompositor")
+        options.add_argument("--single-process")
+        options.add_argument("--no-zygote")
+        options.add_argument("--disable-client-side-phishing-detection")
+        options.add_argument("--disable-default-apps")
+        options.add_argument("--mute-audio")
         # Disable automation flags
         options.add_argument('--disable-infobars')
         options.add_argument('--disable-notifications')
@@ -738,3 +748,4 @@ class ApolloScraper:
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Context manager exit"""
         self.close()
+
