@@ -76,8 +76,8 @@ class ApolloScraper:
         options.add_argument("--disable-background-timer-throttling")
         options.add_argument("--disable-renderer-backgrounding")
         options.add_argument("--disable-features=VizDisplayCompositor")
-        #options.add_argument("--single-process")
-        #options.add_argument("--no-zygote")
+        options.add_argument("--disable-features=NetworkService")
+        options.add_argument("--disable-features=NetworkServiceInProcess")
         options.add_argument("--disable-client-side-phishing-detection")
         options.add_argument("--disable-default-apps")
         options.add_argument("--mute-audio")
@@ -748,5 +748,6 @@ class ApolloScraper:
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Context manager exit"""
         self.close()
+
 
 
