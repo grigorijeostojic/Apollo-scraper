@@ -124,7 +124,14 @@ async def main():
                 
                 log_message(f"🌐 Navigating to Apollo search: {search_url}")
                 # Open the search page
-                scraper.driver.get(search_url)
+                try:
+                    scraper.driver.get(search_url)
+                except Exception as e:
+                    log_message(f"⚠️ Tab crashed, restarting driver: {e}", 'WARNING')
+                    scraper.close()
+                    scraper.setup_driver()
+                    scraper.login(cookies=saved_cookies)
+                    scraper.driver.get(search_url)
                 
                 # Wait for Apollo to render at least one profile card (adjust timeout if needed)
                 try:
